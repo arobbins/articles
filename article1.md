@@ -4,7 +4,16 @@ For some reason, I was always confused by this statement: "Everything in JavaScr
 
 However before we tackle the this question, we need to understand how the different data types are cateogrized in JavaScript.
 
-JavaScript is divided into two data types&mdash;Primitives and Objects. The Primitive types are numbers, strings, booleans, null, and undefined. The Object types are Functions, Arrays, and Objects. Another way of looking at it is anything that is not a Primitive type is an Object.
+JavaScript is divided into two data types&mdash;Primitives and Objects.
+| Primitive Types | Object Types |
+|-----------------|--------------|
+| Numbers         | Functions    |
+| Strings         | Arrays       |
+| Booleans        | Objects 		|
+| Null        		|              |
+| Undefined       |              |
+
+The Primitive types are numbers, strings, booleans, null, and undefined. The Object types are Functions, Arrays, and Objects. Another way of looking at it is anything that is not a Primitive type is an Object.
 
 JavaScript, The Definitive Guide 6th Edition Davig Flanagan pg 29
 
