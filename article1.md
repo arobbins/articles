@@ -5,6 +5,7 @@ For some reason, I was always confused by this statement: "Everything in JavaScr
 However before we tackle the this question, we need to understand how the different data types are cateogrized in JavaScript.
 
 JavaScript is divided into two data types&mdash;Primitives and Objects.
+
 | Primitive Types | Object Types |
 |-----------------|--------------|
 | Numbers         | Functions    |
