@@ -50,9 +50,29 @@ num.prop;
 --> undefined
 ```
 
+I also think it's useful to look at this from a more fundamental level. With regards to primitives, what does it really mean to say that their values cannot be changed? Consider the following code:
+
+```js
+
+1 = 2;
+// ReferenceError
+
+```
+
+This might seem like a silly example, but I think it shines a much needed light on exactly what we're talking about when we talk about mutability. When you type the number 1 in a JavaScript console, the compiler assigns that piece of data to the Primitive data type.
+
 ## Comparison
 
-Besides mutability, another important distinction between Primitive types and Object types is the way they're compared. Primitive values are compared by value while object types are compared by reference. What does this mean? Let's look at Primitives first. Consider the following code:
+Besides mutability, another important distinction between Primitive types and Object types is the way they're compared. Primitive types are compared by value while Object types are compared by reference. What does this mean? Let's look at Primitives first. Consider the following code:
+
+```js
+
+1 === 1;
+// true
+
+```
+
+Taking this example one step further, what happens when we introduce variables into the picture? Nothing has changed except that we're now storing our Primitive data types into variables.
 
 ```js
 var a = "a",
@@ -66,8 +86,8 @@ Since Primitive types are compared by value, the result will true. The value of 
 However look at this. If we apply the same example to an Object type, we get the opposite result.
 
 ```js
-var a = {prop: "value"},
-    b = {prop: "value"};
+var a = {name: "andrew"},
+    b = {name: "andrew"};
 
 a === b; // false
 ```
@@ -77,17 +97,17 @@ Why is this? Object Types must reference the same object in order for its compar
 Another example:
 
 ```js
-var a = {prop: "one"},
+var a = {name: "andrew"},
     b = a;
 
-b.prop = "two";
+b.name = "robbins";
 
 a === b; // true
 ```
 
-This might seem strange at first, but think about what's happening. Because an object literal is part of an Object type, it's values are compared by reference. Reference to what? Reference to the same underlying object. In the above example b is set to a. We didn't copy the object, we're simply creating a reference to the same object, a. Therefore when we mutate "prop" on the object b, we're at the same time mutating "prop" on the object a.
+This might seem strange at first, but look closer at what's happening. Because an object is part of the Object type, it's values are compared by reference. Reference to what? Reference to the same underlying object. In the above example b is set to a. We didn't copy the object. We're simply creating a reference to the same object, namely, a. Therefore when we mutate the "name" property on b, we're at the same time mutating the "name" property on a.
 
-Back to primitives, how would the same example work for them?
+Back to primitives, how would the same example apply to them?
 
 ```js
 var a = "Andrew",
@@ -99,5 +119,15 @@ a === b; // false
 ```
 
 Remembering that Primitives are passed by value, when we set b equal to a, we're actually creating a new copy of a. Therefore when we compare a to b, the value is not the same.
+
+## Summary
+
+JavaScript can be categorized into two types: Primitives and Objects. The Primitive types are Strings, Numbers, Booleans, undefined, null, and Symbol. The object types are Functions, Objects and Arrays.
+
+The two distinctions between Primitives and Objects are Mutability and Comparison.
+
+Primitives are immutable. Another way of saying this is that their values can't be changed. On the other hand, Objects are mutable. Their values can be updated and changed.
+
+Primitives are compared by value. When assigning one primitive to another, a copy is made. Objects on the other hand are compared by reference. Reference to what? Reference to the underlying object. When assigning one object to another, a reference is created. At this point, mutating a value on one object will update the value on the other object.
 
 In the next section, we'll go over how these types fit into the bigger picture by analyzing Prototypes, Constructors, and Inheritance.
