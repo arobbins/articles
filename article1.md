@@ -18,11 +18,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Data_Typ
 | Undefined       |              |
 | Symbol (ES6)    | 					|
 
-Based on this categorizing, the simple anwser is no, not everything in JavaScript is an Object. Only values that belong to that Type are Objects. Another way of looking at it, is any value that isn't a Primitive Type is an Object Type. But what differeniates Primitives from Objects? And more importantly, what do people <em>really mean</em> when they say "everything" or "almost everything" in JavaScript is an Object"?
+Based on this categorizing, the simple anwser is no, not everything in JavaScript is an Object. Only values that belong to that Type are Objects. Another way of looking at it is, any value that isn't a Primitive Type is an Object Type. But what differeniates Primitives from Objects? And more importantly, what do people <em>really mean</em> when they say "everything" or "almost everything" in JavaScript is an Object"?
 
 ## Mutability
 
-From my experience, what people <em>really mean</em> when they talk about values being "object like" is their mutablity. More specifically, they're talking about the ability to add and remove properties. For example, because Functions and Arrays belong to the Object Type, you can add properties to them just like you would an object literal.
+From my experience, what people <em>really mean</em> when they talk about values being "object like" is their mutability. More specifically, they're talking about the ability to add and remove properties. For example, because Functions and Arrays belong to the Object Type you can add properties to them just like you would an object literal.
 
 ```js
 
@@ -50,7 +50,7 @@ num.prop; // undefined
 
 ```
 
-I also think it's useful to look at this from a more fundamental level. With regards to primitives, what does it really mean to say that their values cannot be changed? Consider the following code:
+At this point, I think it's useful to examine this at a more fundamental level. With regards to primitives, what does it really mean to say that their values cannot be changed? Consider the following code:
 
 ```js
 
@@ -60,9 +60,9 @@ I also think it's useful to look at this from a more fundamental level. With reg
 
 This might seem like a silly example, but I think it shines a much needed light on exactly what we're talking about when we talk about mutability. When you type the number 1 in a JavaScript console, the compiler assigns that piece of data to the Primitive data type. Therefore when you attempt to change the number 1 to the number 2, it fails and probably has a heartattack under the hood.
 
-## Comparison
+## Comparison and passing around
 
-Besides mutability, another important distinction between Primitive Types and Object Types is the way they're compared. Primitive Types are compared by value, while Object Types are compared by reference. What does this mean? Let's look at Primitives first. Consider the following code:
+Besides mutability, another important distinction between Primitive Types and Object Types is the way they're compared and passed around within the program. Primitive Types are compared by value, while Object Types are compared by reference. What does this mean? Let's look at Primitives first. Consider the following code:
 
 ```js
 
@@ -93,7 +93,7 @@ a === b; // false
 
 Why is this? Object Types must reference the same object in order for its comparison to be true. As David Falagan puts it: <blockquote>"...we say that objects are compared by reference: two object values are the same if and only if they refer to the same underlying object."</blockquote>
 
-Another example:
+Now, what happens when we pass these values around?
 
 ```js
 
@@ -106,7 +106,7 @@ a === b; // true
 
 ```
 
-This might seem strange at first, but look closer at what's happening. Because objects are part of the Object type, it's values are compared by reference. Reference to what? Reference to the same underlying object. In the above example, we're setting b equal to a. We didn't copy the object. We're simply creating a reference to the same object. Another way of looking at it is that we're pointing the variable b to a. Therefore when we mutate the "name" property on b, we're at the same time mutating the "name" property on a.
+This might seem strange at first, but look closer at what's happening. Because objects are part of the Object type, it's values are compared and by reference. Reference to what? Reference to the same underlying object. In the above example, we're setting b equal to a. We didn't copy the object. We're simply creating a reference to the same object. Another way of looking at it is that we're pointing the variable b to a. Therefore when we mutate the "name" property on b, we're at the same time mutating the "name" property on a.
 
 Back to Primitives, how would the same example apply to them?
 
@@ -121,7 +121,7 @@ a === b; // false
 
 ```
 
-Remembering that Primitives are passed by value, when we set b equal to a, we're actually creating a new copy of a. Therefore when we change the value of b and then compare it to a, the value is not the same.
+Remembering that Primitives are compared and passed by value, when we set b equal to a, we're actually creating a new copy of a. Therefore when we change the value of b and then compare it to a, the value is not the same anymore.
 
 ## Summary
 
