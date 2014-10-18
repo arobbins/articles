@@ -69,7 +69,7 @@ Besides mutability, another important distinction between Primitive Types and Ob
 "a" === "a"; // true
 
 ```
-This is true because the value 1 is equal to 1. Simple. However what happens when we introduce variables into the picture? Nothing has changed except that we're now storing our Primitive Types into variables.
+This is true because the value "a" is equal to "a". Simple. However what happens when we introduce variables into the picture? Nothing has changed except that we're now storing our Primitive Types into variables.
 
 ```js
 
@@ -91,7 +91,7 @@ a === b; // false
 
 ```
 
-Why is this? Object Types must reference the same object in order for its comparison to be true. As David Falagan puts it: "...we say that objects are compared by reference: two object values are the same if and only if they refer to the same underlying object."
+Why is this? Object Types must reference the same object in order for its comparison to be true. As David Falagan puts it: <blockquote>"...we say that objects are compared by reference: two object values are the same if and only if they refer to the same underlying object."</blockquote>
 
 Another example:
 
@@ -106,9 +106,9 @@ a === b; // true
 
 ```
 
-This might seem strange at first, but look closer at what's happening. Because an object is part of the Object type, it's values are compared by reference. Reference to what? Reference to the same underlying object. In the above example b is set to a. We didn't copy the object. We're simply creating a reference to the same object, namely, a. Therefore when we mutate the "name" property on b, we're at the same time mutating the "name" property on a.
+This might seem strange at first, but look closer at what's happening. Because objects are part of the Object type, it's values are compared by reference. Reference to what? Reference to the same underlying object. In the above example, we're setting b equal to a. We didn't copy the object. We're simply creating a reference to the same object. Another way of looking at it is that we're pointing the variable b to a. Therefore when we mutate the "name" property on b, we're at the same time mutating the "name" property on a.
 
-Back to primitives, how would the same example apply to them?
+Back to Primitives, how would the same example apply to them?
 
 ```js
 
@@ -121,7 +121,7 @@ a === b; // false
 
 ```
 
-Remembering that Primitives are passed by value, when we set b equal to a, we're actually creating a new copy of a. Therefore when we compare a to b, the value is not the same.
+Remembering that Primitives are passed by value, when we set b equal to a, we're actually creating a new copy of a. Therefore when we change the value of b and then compare it to a, the value is not the same.
 
 ## Summary
 
