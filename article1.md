@@ -22,7 +22,7 @@ Based on this categorizing, the simple anwser is no, not everything in JavaScrip
 
 ## Mutability
 
-From my experience, what people really mean when they talk about values being "object like", are their mutablity&mdash;specifically&mdash;their ability to add and remove properties. For example, because Functions and Arrays are objects at their core, you can add properties to them just like an object literal.
+From my experience what people <em>really mean</em> when they talk about values being "object like" is their mutablity. More specifically, they're talking about the ability to add and remove properties. For example, because Functions and Arrays belong to the Object type, you can add properties to them just like you would an object literal.
 
 ```js
 var func = function() {};
@@ -56,7 +56,7 @@ Besides mutability, another important distinction between Primitive types and Ob
 
 ```js
 var a = "a",
-	 b = "a";
+    b = "a";
 
 a === b; // true
 ```
@@ -67,7 +67,7 @@ However look at this. If we apply the same example to an Object type, we get the
 
 ```js
 var a = {prop: "value"},
-	 b = {prop: "value"};
+    b = {prop: "value"};
 
 a === b; // false
 ```
@@ -78,7 +78,7 @@ Another example:
 
 ```js
 var a = {prop: "one"},
-	 b = a;
+    b = a;
 
 b.prop = "two";
 
@@ -91,7 +91,7 @@ Back to primitives, how would the same example work for them?
 
 ```js
 var a = "Andrew",
-	 b = a;
+    b = a;
 
 b = "Robbins";
 
