@@ -66,23 +66,21 @@ Besides mutability, another important distinction between Primitive Types and Ob
 
 ```js
 
-1 === 1; // true
+"a" === "a"; // true
 
 ```
-This is true because the value 1 is equal to 1. Simple. However what happens when we introduce variables into the picture? Nothing has changed except that we're now storing our Primitive data Types into variables.
+This is true because the value 1 is equal to 1. Simple. However what happens when we introduce variables into the picture? Nothing has changed except that we're now storing our Primitive Types into variables.
 
 ```js
 
-var a = 1,
-    b = 1;
+var a = "a",
+    b = "a";
 
 a === b; // true
 
 ```
 
-Since Primitive Types are compared by value, the result will true. The value of the variable a is exactly equal to the value of the variable b. In other words, "a" equals "a"; Aristotle would be proud.
-
-However look at this. If we apply the same example to an Object type, we get the opposite result.
+Since Primitive Types are compared by value, the result will true. The value of the variable a is exactly equal to the value of the variable b. In other words, "a" equals "a". Aristotle would be proud. However look at this. If we apply the same example to an Object Type, we get the opposite result.
 
 ```js
 
