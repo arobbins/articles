@@ -2,7 +2,7 @@
 
 I always found this statement confusing: "Everything in JavaScript is an Object". What did they mean by this? How can a Function or an Array be an Object? The awnser is deceptively simple.
 
-However before we tackle this question, we need to understand how the different data types are cateogrized in JavaScript. There are two data types in JavaScript&mdash;Primitive types and Object types. (Objects types are also sometimes referred to as Reference types).
+However before we tackle this question, we need to understand how the different data types are cateogrized. In JavaScript, there are two data types: Primitives and Objects. (Object types are also sometimes referred to as Reference types).
 
 http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf pg 2
 JavaScript, The Definitive Guide 6th Edition Davig Flanagan pg 29
