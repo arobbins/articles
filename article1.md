@@ -1,22 +1,45 @@
 # Is everything in JavaScript an Object?
 
-I always found this statement confusing: "Everything in JavaScript is an Object". What did they mean by this? How can a Function or an Array be an Object? The awnser is deceptively simple.
+I've always found this statement confusing: "Everything in JavaScript is an Object". What did they mean by this? How can a Function or an Array at the same time be an Object? The answer is deceptively simple.
 
-However before we tackle this question, we need to understand how the different Data Types are cateogrized. In JavaScript, there are two Data Types: Primitives and Objects. (Object Types are also sometimes referred to as Reference Types).
+However before we tackle this question, we need to understand how the different Data Types are categorized. In JavaScript, there are two Data Types: Primitives and Objects. (Object Types are also sometimes referred to as Reference Types).
 
 http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf pg 2
 JavaScript, The Definitive Guide 6th Edition Davig Flanagan pg 29
 http://www.codecademy.com/courses/primitives-development-course/6/1
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Data_Types
 
-|: Primitive Types |: Object Types |
-|-----------------|--------------|
-| Numbers         | Functions    |
-| Strings         | Arrays       |
-| Booleans        | Objects 		|
-| Null        		|              |
-| Undefined       |              |
-| Symbol (ES6)    | 					|
+<table>
+	<thead>
+		<tr>
+			<th>Primitive Types</th>
+			<th>Object Types</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Numbers</td>
+			<td>Functions</td>
+		</tr>
+		<tr>
+			<td>Strings</td>
+			<td>Objects</td>
+		</tr>
+		<tr>
+			<td>Booleans</td>
+			<td>Arrays</td>
+		</tr>
+		<tr>
+			<td>Null</td>
+		</tr>
+		<tr>
+			<td>Undefined</td>
+		</tr>
+		<tr>
+			<td>Symbol</td>
+		</tr>
+	</tbody>
+</table>
 
 Based on this categorizing, the simple anwser is no, not everything in JavaScript is an Object. Only values that belong to that Type are Objects. Another way of looking at it is, any value that isn't a Primitive Type is an Object Type. But what differeniates Primitives from Objects? And more importantly, what do people <em>really mean</em> when they say "everything" or "almost everything" in JavaScript is an Object"?
 
@@ -106,6 +129,35 @@ a === b; // false
 ```
 
 Remembering that Primitives are compared and passed by value, when we set b equal to a, we're actually creating a new copy of a. Therefore when we change the value of b and then compare it to a, the value is not the same anymore.
+
+## Wrapper Objects
+
+Some of you may be wondering, "Ok, if Primitives aren't Objects then why can I call methods on them?" The answer is Wrapper Objects.
+
+When you attempt to call methods on a Primitive, JavaScript does a magic trick behind the scenes. It takes your Primitive value and converts it to a <em>temporary</em> Object using a constructor function. The decision of which constructor function to use will depend on the Primitive value you're attempting to change. For example, calling .length on a string will use the built in String() constructor to <em>temporarily</em> change the Primitive to an Object&mdash;allowing you to use the length method. This temporary Object is called a Wrapper Object.
+
+Interestingly enough, the two Primitive values Null and Undefined do not behave this way. Trying to call methods on these values will result in a TypeError.
+
+We can use the typeof keyword to show the difference.
+
+```js
+typeof "s"; // "string"
+typeof new String(s); //"object"
+```
+
+It's also useful to know that properties on Primitives are read-only, and temporary.
+
+```js
+var hello = "hello";
+hello.slice(1); // "ello" (Here we're actually calling slice not on hello, but of a copy of hello)
+hello; // "hello"
+```
+
+
+https://www.youtube.com/watch?v=-EgZUeYPmSg
+http://www.adequatelygood.com/Object-to-Primitive-Conversions-in-JavaScript.html
+http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/
+
 
 ## Summary
 
